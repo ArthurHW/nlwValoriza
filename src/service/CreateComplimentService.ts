@@ -1,6 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import { ComplimentsRepositories } from "../repositories/ComplimentsRepositories";
-import { UserRepositories } from "../repositories/UsersRepositories";
+import { UsersRepositories } from "../repositories/UsersRepositories";
 
 
 interface IComplimentRequest {
@@ -13,7 +13,7 @@ interface IComplimentRequest {
 class CreateComplimentService {
     async execute({tag_id, user_receiver, user_sender, message} : IComplimentRequest) {
         const complimentsRepositories = getCustomRepository(ComplimentsRepositories);
-        const usersRepositories = getCustomRepository(UserRepositories);
+        const usersRepositories = getCustomRepository(UsersRepositories);
 
         if (user_sender == user_receiver) {
             throw new Error("User cannot send compliment to himself!");
